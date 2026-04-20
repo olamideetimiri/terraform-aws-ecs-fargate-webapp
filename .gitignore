@@ -5,9 +5,5 @@ terraform.tfstate.*
 *.tfstate
 *.tfstate.backup
 
-# Sensitive files
-*.tfvars
-*.tfvars.json
-
 # MacOS
 .DS_Store
