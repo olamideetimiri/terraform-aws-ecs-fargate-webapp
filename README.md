@@ -72,7 +72,7 @@ Endpoints include:
 | /health    | Used by the ALB health check                     |
 | /hostname  | Returns the container instance identifier        |
 
-The `/hostname` endpoint helps demonstrate load balancing across multiple containers.
+The /hostname endpoint helps demonstrate load balancing across multiple containers.
 
 ---
 
@@ -116,7 +116,7 @@ An Application Load Balancer (ALB) is deployed in public subnets and acts as the
 
 The ALB distributes incoming HTTP requests across ECS tasks running in multiple Availability Zones.
 
-Health checks are configured on the `/health` endpoint to ensure only healthy containers receive traffic.
+Health checks are configured on the /health endpoint to ensure only healthy containers receive traffic.
 
 ---
 
@@ -231,7 +231,7 @@ Then test the following endpoints:
 /health → returns OK  
 /hostname → shows which container handled the request  
 
-Refreshing `/hostname` should return different values, demonstrating load balancing.
+Refreshing /hostname should return different values, demonstrating load balancing.
 
 ---
 
