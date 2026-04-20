@@ -19,7 +19,7 @@ class Handler(BaseHTTPRequestHandler):
 
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b"Hello from ECS")
+        self.wfile.write(b"Hello from ECS. The CI/CD pipeline is now working.")
 
 
 server = HTTPServer(("0.0.0.0", 8000), Handler)
