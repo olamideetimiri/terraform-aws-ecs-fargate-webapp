@@ -32,7 +32,30 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build Docker image
-        run: docker build --platform linux/amd64 -t $ECR_REPOSITORY:$IMAGE_TAG ./app
+        run: |
+          docker build --platform linux/amd64 \
+            -t $ECR_REPOSITORY:$IMAGE_TAG ./app
+
+      - name: Run container locally for smoke test
+        run: |
+          docker run -d \
+            --name test-app \
+            -p 8000:8000 \
+            $ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Wait for container to start
+        run: |
+          sleep 5
+
+      - name: Test health endpoint
+        run: |
+          curl --fail http://localhost:8000/health
+
+      - name: Stop test container
+        if: always()
+        run: |
+          docker stop test-app || true
+          docker rm test-app || true
 
       - name: Tag Docker image
         run: |
